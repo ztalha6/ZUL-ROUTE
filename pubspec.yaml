@@ -28,7 +28,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   stacked: ^2.2.3
-  stacked_services: ^0.8.13
   pinput: ^1.2.0
 
 dev_dependencies:
