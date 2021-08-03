@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'package:zul_route/global/appbar/app_bar_widget.dart';
 import 'package:zul_route/screens/home_page/home_page_viewmodel.dart';
 
 class VerifyOtpView extends StatelessWidget {
@@ -25,11 +26,7 @@ class VerifyOtpView extends StatelessWidget {
       onModelReady: (m) => m.init(),
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, _) => Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          //iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.blue,
-        ),
+        appBar: getAppBarWidget(title, context),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -98,7 +95,9 @@ class VerifyOtpView extends StatelessWidget {
                       PinPut(
                         autofocus: true,
                         //focusNode: FocusScope.of(context).,
-                        onSubmit: (s) async {},
+                        onSubmit: (s) async {
+                          model.navigateToAdminHome(context);
+                        },
                         textInputAction: TextInputAction.next,
                         textStyle: subHeadingStyle,
                         eachFieldMargin:
@@ -107,7 +106,7 @@ class VerifyOtpView extends StatelessWidget {
                         fieldsCount: 4,
                         onChanged: (String value) {
                           print("TEXT VALUE: $value");
-                          //model.validateOtp(value);
+                          model.validateOtp(value);
                         },
                         submittedFieldDecoration: _pinPutDecoration.copyWith(
                           borderRadius: BorderRadius.circular(20.0),
@@ -134,7 +133,11 @@ class VerifyOtpView extends StatelessWidget {
                       Expanded(child: Text('IP : ' + model.ip)),
                       Expanded(
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: model.isButtonEnabled
+                                ? () {
+                                    model.navigateToAdminHome(context);
+                                  }
+                                : null,
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 20.0),
