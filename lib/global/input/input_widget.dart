@@ -8,7 +8,7 @@ class InputWidget extends StatelessWidget {
   bool obscureText;
   String labelText;
   Color cursorColor;
-  Widget suffixIcon;
+  Widget? suffixIcon;
   String errorText;
   String hintText;
   TextStyle hintStyle;

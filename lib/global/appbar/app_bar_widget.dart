@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:zul_route/global/strings/accet_strings.dart';
 
 PreferredSizeWidget getAppBarWidget(String title, BuildContext context) {
   return AppBar(
     toolbarHeight: MediaQuery.of(context).size.height * 0.12,
-    // flexibleSpace: Image(
-    //   image: AssetImage(APP_BAR_BG),
-    //   fit: BoxFit.cover,
-    // ),
+    flexibleSpace: Image(
+      image: AssetImage(APP_BAR_BG),
+      fit: BoxFit.cover,
+    ),
     title: Text(title),
     actions: [
       // title == "ZUL ROUTE"
