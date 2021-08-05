@@ -245,51 +245,74 @@ class AppSettingsView extends StatelessWidget {
                   ),
                   Divider(color: Colors.grey),
                   Padding(
-                    padding: const EdgeInsets.only(top: 16, bottom: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    padding: const EdgeInsets.only(top: 16, bottom: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            PopupMenuButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0))),
-                                child: Container(
-                                  child: Icon(Icons.info_outline),
-                                ),
-                                itemBuilder: (context) {
-                                  List<PopupMenuItem> _list = <PopupMenuItem>[];
-                                  _list.add(PopupMenuItem(
-                                    child: Text("Employee Code"),
-                                  ));
-                                  return _list;
-                                }),
-                            SizedBox(width: 16, height: 50),
-                            Text("Employee Code", style: boldStyle),
+                            Row(
+                              children: [
+                                PopupMenuButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0))),
+                                    child: Container(
+                                      child: Icon(Icons.info_outline),
+                                    ),
+                                    itemBuilder: (context) {
+                                      List<PopupMenuItem> _list =
+                                          <PopupMenuItem>[];
+                                      _list.add(PopupMenuItem(
+                                        child: Text("Employee Code"),
+                                      ));
+                                      return _list;
+                                    }),
+                                SizedBox(width: 16, height: 50),
+                                Text("Employee Code", style: boldStyle),
+                              ],
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              child: InputWidget(
+                                onDone: () {},
+                                onEditingComplete: () {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                textinputAction: TextInputAction.next,
+                                keyboardType: TextInputType.number,
+                                hintText: "Emp Code",
+                                controller: model.empCodeController,
+                                errorText: model.empCodeError,
+                                borderColor: Theme.of(context).primaryColor,
+                                cursorColor: Colors.black,
+                                hintStyle: TextStyle(),
+                                labelText: 'Employee Code',
+                                onChanged: (String) {},
+                                suffixIcon: null,
+                                validator: (String) {},
+                              ),
+                            ),
                           ],
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.50,
-                          child: InputWidget(
-                            onDone: () {},
-                            onEditingComplete: () {
-                              FocusScope.of(context).nextFocus();
-                            },
-                            textinputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            hintText: "Emp Code",
-                            controller: model.empCodeController,
-                            errorText: model.empCodeError,
-                            borderColor: Theme.of(context).primaryColor,
-                            cursorColor: Colors.black,
-                            hintStyle: TextStyle(),
-                            labelText: 'Employee Code',
-                            onChanged: (String) {},
-                            suffixIcon: null,
-                            validator: (String) {},
-                          ),
-                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 140, top: 8),
+                          child: Row(children: [
+                            Flexible(
+                              child: CheckboxListTile(
+                                title: Text("Advance Text Process",
+                                    style: boldStyle),
+                                value: model.check,
+                                onChanged: (newValue) {
+                                  model.check = newValue;
+                                },
+                                controlAffinity: ListTileControlAffinity
+                                    .leading, //  <-- leading Checkbox
+                              ),
+                            ),
+                          ]),
+                        )
                       ],
                     ),
                   ),
@@ -317,38 +340,79 @@ class AppSettingsView extends StatelessWidget {
                   SizedBox(
                     height: 8,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: InputWidget(
-                          onDone: () {},
-                          onEditingComplete: () {
-                            FocusScope.of(context).nextFocus();
-                          },
-                          textinputAction: TextInputAction.next,
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (val) {},
-                          controller: model.localDBController,
-                          errorText: model.localDBError,
-                          hintText: "Local DB",
-                          borderColor: Theme.of(context).primaryColor,
-                          cursorColor: Colors.black,
-                          hintStyle: TextStyle(),
-                          labelText: 'Local DB',
-                          suffixIcon: null,
-                          validator: (String) {},
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, bottom: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: InputWidget(
+                            onDone: () {},
+                            onEditingComplete: () {
+                              FocusScope.of(context).nextFocus();
+                            },
+                            textinputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            onChanged: (val) {},
+                            controller: model.localDBController,
+                            errorText: model.localDBError,
+                            hintText: "Local DB",
+                            borderColor: Theme.of(context).primaryColor,
+                            cursorColor: Colors.black,
+                            hintStyle: TextStyle(),
+                            labelText: 'Local DB',
+                            suffixIcon: null,
+                            validator: (String) {},
+                          ),
                         ),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.file_upload_rounded))
-                    ],
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.file_upload_rounded))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(primary: Colors.red),
+                            onPressed: () async {},
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Text(
+                                "Close",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () async {},
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Text(
+                                "Save",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
           ),
         ),
+        //floatingActionButton:
       ),
     );
   }
