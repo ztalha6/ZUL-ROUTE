@@ -5,6 +5,13 @@ class AppSettingsViewModel extends ChangeNotifier {
   TextEditingController _dbServerController = TextEditingController();
   TextEditingController _databaseController = TextEditingController();
   TextEditingController get dbServerController => _dbServerController;
+  bool? _check = false;
+  bool? get check => _check;
+  set check(bool? val) {
+    _check = val;
+    notifyListeners();
+  }
+
   set dbServerController(TextEditingController val) {
     _dbServerController = val;
     notifyListeners();
