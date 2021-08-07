@@ -47,11 +47,13 @@ class AppSettingsView extends StatelessWidget {
                                   return _list;
                                 }),
                             SizedBox(width: 16, height: 50),
-                            Text("DB Server", style: boldStyle),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Text("DB Server", style: boldStyle)),
                           ],
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.56,
+                          width: MediaQuery.of(context).size.width * 0.45,
                           child: InputWidget(
                             onDone: () {},
                             onEditingComplete: () {
@@ -97,11 +99,13 @@ class AppSettingsView extends StatelessWidget {
                                   return _list;
                                 }),
                             SizedBox(width: 16, height: 50),
-                            Text("Database", style: boldStyle),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Text("Database", style: boldStyle)),
                           ],
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.56,
+                          width: MediaQuery.of(context).size.width * 0.45,
                           child: InputWidget(
                             onDone: () {},
                             onEditingComplete: () {
@@ -147,11 +151,13 @@ class AppSettingsView extends StatelessWidget {
                                   return _list;
                                 }),
                             SizedBox(width: 16, height: 50),
-                            Text("Login ID", style: boldStyle),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Text("Login ID", style: boldStyle)),
                           ],
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.56,
+                          width: MediaQuery.of(context).size.width * 0.45,
                           child: InputWidget(
                             onDone: () {},
                             onEditingComplete: () {
@@ -197,11 +203,13 @@ class AppSettingsView extends StatelessWidget {
                                   return _list;
                                 }),
                             SizedBox(width: 16, height: 50),
-                            Text("Password", style: boldStyle),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Text("Password", style: boldStyle)),
                           ],
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.56,
+                          width: MediaQuery.of(context).size.width * 0.45,
                           child: InputWidget(
                             obscureText: true,
                             onDone: () {},
@@ -247,7 +255,7 @@ class AppSettingsView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 16, bottom: 8),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -270,7 +278,11 @@ class AppSettingsView extends StatelessWidget {
                                       return _list;
                                     }),
                                 SizedBox(width: 16, height: 50),
-                                Text("Employee Code", style: boldStyle),
+                                Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.25,
+                                    child: Text("Employee Code",
+                                        style: boldStyle)),
                               ],
                             ),
                             Container(
@@ -297,7 +309,7 @@ class AppSettingsView extends StatelessWidget {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 140, top: 8),
+                          padding: const EdgeInsets.only(top: 8),
                           child: Row(children: [
                             Flexible(
                               child: CheckboxListTile(
@@ -379,7 +391,9 @@ class AppSettingsView extends StatelessWidget {
                           child: ElevatedButton(
                             style:
                                 ElevatedButton.styleFrom(primary: Colors.red),
-                            onPressed: () async {},
+                            onPressed: () async {
+                              Navigator.pop(context);
+                            },
                             child: Padding(
                               padding: EdgeInsets.symmetric(vertical: 20),
                               child: Text(
