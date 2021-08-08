@@ -11,6 +11,35 @@ class AdminHomeView extends StatelessWidget {
   final String title;
 
   AdminHomeView({required this.title});
+  Future<void> _showDialog(BuildContext context,
+      {required String content,
+      required String title,
+      required Function function}) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (bCtx) {
+          return AlertDialog(
+            title: Text("$title"),
+            content: Text("$content"),
+            actions: [
+              TextButton(
+                child: Text("No"),
+                onPressed: () {
+                  Navigator.pop(bCtx);
+                },
+              ),
+              TextButton(
+                child: Text("Yes"),
+                onPressed: () {
+                  function();
+                  Navigator.pop(bCtx);
+                },
+              )
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +91,13 @@ class AdminHomeView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _showDialog(context,
+                                content:
+                                    "Are you sure to Initialize device, all data will be removed.",
+                                title: "Attention!",
+                                function: () {});
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
@@ -74,7 +109,13 @@ class AdminHomeView extends StatelessWidget {
                       ),
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _showDialog(context,
+                                content:
+                                    "Are you sure to Recieve data from Server? all data will be replaced.",
+                                title: "Attention!",
+                                function: () {});
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
@@ -90,7 +131,13 @@ class AdminHomeView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _showDialog(context,
+                                content:
+                                    "Are you sure to Recieve data from Server? all data will be replaced.",
+                                title: "Attention!",
+                                function: () {});
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
@@ -102,7 +149,12 @@ class AdminHomeView extends StatelessWidget {
                       ),
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _showDialog(context,
+                                content: "Are you sure to send data to Server?",
+                                title: "Attention!",
+                                function: () {});
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
@@ -118,7 +170,13 @@ class AdminHomeView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _showDialog(context,
+                                content:
+                                    "Are you sure, you want to remove inventory items?",
+                                title: "Attention!",
+                                function: () {});
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
