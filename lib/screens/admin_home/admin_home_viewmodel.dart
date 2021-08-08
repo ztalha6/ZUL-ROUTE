@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zul_route/screens/application_settings/app_settings_view.dart';
 import 'package:zul_route/screens/home_page/home_page_view.dart';
+import 'package:zul_route/screens/printer_settings/printer_settings_view.dart';
 
 class AdminHomeViewModel extends ChangeNotifier {
   String driverName = 'Saud Muhammad [Vehicle # 1002]';
@@ -37,6 +38,14 @@ class AdminHomeViewModel extends ChangeNotifier {
       context,
       MaterialPageRoute(
           builder: (context) => VerifyOtpView(title: "ZUL ROUTE")),
+    );
+  }
+
+  void navigateToPrinterSettings(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => PrinterSettingsView(title: "Printer Settings")),
     );
   }
 }

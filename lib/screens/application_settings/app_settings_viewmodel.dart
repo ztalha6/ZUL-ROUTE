@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
-class AppSettingsViewModel extends ChangeNotifier {
+class AppSettingsViewModel extends BaseViewModel {
   TextEditingController _dbServerController = TextEditingController();
   TextEditingController _databaseController = TextEditingController();
   TextEditingController get dbServerController => _dbServerController;

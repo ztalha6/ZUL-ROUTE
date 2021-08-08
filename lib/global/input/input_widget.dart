@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 // ignore: must_be_immutable
 class InputWidget extends StatelessWidget {
   void Function(String) validator;
-  TextEditingController controller;
+  TextEditingController? controller;
   bool obscureText;
   String labelText;
   Color cursorColor;

@@ -44,7 +44,9 @@ class AdminHomeView extends StatelessWidget {
                       ),
                       Expanded(
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            model.navigateToPrinterSettings(context);
+                          },
                           child: Card(
                               elevation: 10,
                               child: Padding(
