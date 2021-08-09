@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zul_route/screens/admin_home/admin_home_view.dart';
+import 'package:zul_route/screens/opetaror_home/operator_home_view.dart';
 
 class HomeViewModel extends ChangeNotifier {
   String driverName = 'Saud Muhammad [Vehicle # 1002]';
@@ -34,10 +35,18 @@ class HomeViewModel extends ChangeNotifier {
   init() {}
 
   void navigateToAdminHome(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (context) => AdminHomeView(title: "Admin Home")),
-    );
+    if (otpController.text == "4567") {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AdminHomeView(title: "Admin Home")),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => OperatorHomeView(title: "Operator Home")),
+      );
+    }
   }
 }
